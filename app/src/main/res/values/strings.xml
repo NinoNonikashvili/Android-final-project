@@ -2,4 +2,12 @@
     <string name="app_name">BankApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello">გამარჯობა</string>
+    <string name="username">მომხმარებლის სახელი</string>
+    <string name="password">პაროლი</string>
+    <string name="forgotPassword">დაგავიწყდა პაროლი?</string>
+    <string name="login">შესვლა</string>
+    <string name="register">რეგისტრაცია</string>
+
+
 </resources>

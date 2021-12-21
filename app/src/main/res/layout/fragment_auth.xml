@@ -1,14 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AuthFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:alpha="0.7"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/bank_safe" />
 
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="30dp"
+    tools:context=".ui.AuthFragment">
+
+        <TextView
+            android:id="@+id/hello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:text="@string/hello"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/usernameWrapper"
+            android:layout_below="@+id/hello"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/username"
+            app:errorEnabled="true"
+            android:textColorHint="@color/white"
+            app:hintTextColor="@color/blue"
+            app:boxStrokeColor="@color/blue"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/username"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:theme="@style/cursorColor"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordWrapper"
+            android:layout_below="@+id/usernameWrapper"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:errorEnabled="true"
+            android:hint="@string/password"
+            app:boxStrokeColor="@color/blue"
+            android:textColorHint="@color/white"
+            app:hintTextColor="@color/blue"
+
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:id="@+id/password"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:theme="@style/cursorColor"
+
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/passwordWrapper"
+            android:layout_alignParentEnd="true"
+            android:text="@string/forgotPassword"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:letterSpacing="0.05"
+
+            />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/login"
+            android:layout_below="@+id/forgotPassword"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:backgroundTint="@color/blue"
+            android:textSize="26sp"
+            android:letterSpacing="0.05"/>
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:textColor="@color/blue"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login"
+            android:layout_marginTop="20dp"
+            android:id="@+id/register"
+            android:text="@string/register"
+            android:textSize="26sp"
+            android:letterSpacing="0.05"
+            />
+
+    </RelativeLayout>
 </FrameLayout>
