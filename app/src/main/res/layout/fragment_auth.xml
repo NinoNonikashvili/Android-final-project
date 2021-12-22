@@ -9,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.7"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/bank_safe" />
+        android:scaleType="centerCrop"/>
+<!--        app:srcCompat="@drawable/bank_safe" />-->
 
     <RelativeLayout
     android:layout_width="match_parent"
@@ -99,18 +99,18 @@
             android:backgroundTint="@color/blue"
             android:textSize="26sp"
             android:letterSpacing="0.05"/>
+
         <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
+            android:id="@+id/register"
             style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:textColor="@color/blue"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/login"
             android:layout_marginTop="20dp"
-            android:id="@+id/register"
-            android:text="@string/register"
-            android:textSize="26sp"
             android:letterSpacing="0.05"
-            />
+            android:text="@string/register"
+            android:textColor="@color/blue"
+            android:textSize="26sp" />
 
     </RelativeLayout>
 </FrameLayout>

@@ -9,9 +9,10 @@ import androidx.viewbinding.ViewBinding
 import com.example.bankapp.R
 
 
-abstract class BaseFragment<T: ViewBinding>(private val inflateMethod : (LayoutInflater, ViewGroup?, Boolean) -> T) : Fragment() {
-    var _binding:T? = null
-    val binding:T
+abstract class BaseFragment<T : ViewBinding>(private val inflateMethod: (LayoutInflater, ViewGroup?, Boolean) -> T) :
+    Fragment() {
+    var _binding: T? = null
+    val binding: T
         get() = _binding!!
 
     override fun onCreateView(
@@ -28,6 +29,7 @@ abstract class BaseFragment<T: ViewBinding>(private val inflateMethod : (LayoutI
         super.onDestroy()
         _binding = null
     }
-    abstract  fun start()
+
+    abstract fun start()
 
 }

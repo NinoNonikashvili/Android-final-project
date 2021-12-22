@@ -4,10 +4,22 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello">გამარჯობა</string>
     <string name="username">მომხმარებლის სახელი</string>
-    <string name="password">პაროლი</string>
     <string name="forgotPassword">დაგავიწყდა პაროლი?</string>
     <string name="login">შესვლა</string>
     <string name="register">რეგისტრაცია</string>
+    <string name="userId">პირადი ნომერი</string>
+    <string name="mobileNumber">მობილურის ნომერი</string>
+    <string name="next">შემდეგი</string>
+    <string name="cardAuth">ბარათით იდენტიფიკაცია</string>
+    <string name="firstSixNumbers">პირველი 6</string>
+    <string name="lastFourNumbers">ბოლო 4</string>
+    <string name="month_year">თვე/წელი</string>
+    <string name="cvcCode">CVC</string>
+    <string name="user_name">მომხმარებლის სახელი</string>
+    <string name="password">პაროლი</string>
+    <string name="repeat_password">გაიმეორეთ პაროლი</string>
+    <string name="agreement">ვეთანხმები პირობებს</string>
+    <string name="registration">რეგისტრაცია</string>
 
 
 </resources>
