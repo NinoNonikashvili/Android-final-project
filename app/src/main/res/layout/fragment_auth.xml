@@ -89,16 +89,17 @@
             android:letterSpacing="0.05"
 
             />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/login"
-            android:layout_below="@+id/forgotPassword"
-            android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login"
+            android:layout_below="@+id/forgotPassword"
+            android:layout_marginTop="50dp"
             android:backgroundTint="@color/blue"
-            android:textSize="26sp"
-            android:letterSpacing="0.05"/>
+            android:letterSpacing="0.05"
+            android:text="@string/login"
+            android:textSize="26sp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/register"

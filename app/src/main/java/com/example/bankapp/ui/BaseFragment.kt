@@ -11,8 +11,8 @@ import com.example.bankapp.R
 
 abstract class BaseFragment<T : ViewBinding>(private val inflateMethod: (LayoutInflater, ViewGroup?, Boolean) -> T) :
     Fragment() {
-    var _binding: T? = null
-    val binding: T
+    private var _binding: T? = null
+    protected val binding: T
         get() = _binding!!
 
     override fun onCreateView(

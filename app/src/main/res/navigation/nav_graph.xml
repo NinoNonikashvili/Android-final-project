@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_authFragment_to_regFirstFragment"
             app:destination="@id/regFirstFragment" />
+        <action
+            android:id="@+id/action_authFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/regFirstFragment"
@@ -28,4 +31,9 @@
         android:name="com.example.bankapp.ui.RegSecondFragment"
         android:label="fragment_reg_second"
         tools:layout="@layout/fragment_reg_second" />
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.example.bankapp.ui.UserProfileFragment"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" />
 </navigation>
