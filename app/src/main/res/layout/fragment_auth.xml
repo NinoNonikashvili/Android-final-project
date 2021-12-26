@@ -54,6 +54,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordWrapper"
             android:layout_below="@+id/usernameWrapper"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

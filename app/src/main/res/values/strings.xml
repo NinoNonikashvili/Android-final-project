@@ -8,6 +8,21 @@
     <string name="forgotPassword">დაგავიწყდა პაროლი?</string>
     <string name="login">შესვლა</string>
     <string name="register">რეგისტრაცია</string>
+    <string name="currencies">კურსები</string>
+    <string name="calculator">კალკულატორი</string>
+    <string name="bank_name">ABC Bank</string>
+    <string name="official_rate_title">"ოფიც.კურსი"</string>
+    <string name="mob_rate_title">"მობ.ბანკის კურსი"</string>
+    <string name="official_rate">"3.0054"</string>
+    <string name="buy_rate">"2.2332"</string>
+    <string name="sell_Rate">"2.1032"</string>
+    <string name="buy_title">"ყიდვა"</string>
+    <string name="sell_title">"გაყიდვა"</string>
+    <string name="currency_title">"1 აშშ დოლარი "</string>
+    <string name="typeAmount">"0.00"</string>
+    <string name="convertFrom">"საიდან?"</string>
+    <string name="convertTo">"სად?"</string>
+
 
 
 </resources>
