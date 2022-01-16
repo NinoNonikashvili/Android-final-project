@@ -8,7 +8,7 @@ import com.example.bankapp.databinding.FragmentAuthBinding
 class AuthFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::inflate) {
     override fun start() {
         binding.login.setOnClickListener{
-            findNavController().navigate(R.id.action_authFragment_to_currenciesFragment)
+            findNavController().navigate(R.id.action_authFragment_to_swipeFragment)
 
         }
 
