@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="30dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.RegSecondFragment">
 
-    <RelativeLayout
-        android:id="@+id/parentLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="30dp"
-        tools:context=".ui.AuthFragment">
+
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/registration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="30dp"
             android:text="@string/registration"
             android:textColor="@color/blue"
@@ -27,7 +25,7 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/userNameWrapper"
-            android:layout_below="@id/registration"
+            app:layout_constraintTop_toBottomOf="@id/registration"
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,7 +50,7 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/passwordWrapper"
-            android:layout_below="@id/userNameWrapper"
+            app:layout_constraintTop_toBottomOf="@id/userNameWrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:errorEnabled="true"
@@ -74,7 +72,7 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/passwordRepeatWrapper"
-            android:layout_below="@id/passwordWrapper"
+            app:layout_constraintTop_toBottomOf="@id/passwordWrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:errorEnabled="true"
@@ -98,7 +96,7 @@
             android:layout_below="@id/passwordRepeatWrapper"
             android:id="@+id/checkBox"
             android:textColor="@color/black"
-
+            app:layout_constraintTop_toBottomOf="@id/passwordRepeatWrapper"
             android:text="@string/agreement"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -108,16 +106,11 @@
             android:id="@+id/next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/checkBox"
-            android:layout_marginTop="200dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:backgroundTint="@color/blue"
             android:letterSpacing="0.05"
             android:text="@string/registration"
             android:textSize="26sp" />
 
 
-
-
-    </RelativeLayout>
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
