@@ -1,6 +1,7 @@
 package com.example.bankapp.ui
 
 
+import android.content.Context
 import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -21,7 +22,6 @@ class CryptoCurrenciesFragment : BaseFragment<FragmentCryptoCurrenciesBinding>(F
         initRecyclerView()
     }
     private fun initRecyclerView(){
-        var namesList = arrayListOf<String>("Bitcoin", "Etherium", "Dogge")
        val cryptoRecycler =  binding.RVCryptoRecyclerView
         cryptoRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         cryptoAdapter = CryptoCurrenciesAdapter()
@@ -43,9 +43,7 @@ class CryptoCurrenciesFragment : BaseFragment<FragmentCryptoCurrenciesBinding>(F
                     is CryptoViewModel.States.Loading->{
                         Log.d("nio", "loading")
                     }
-                    else ->
-                        Log.d("nio", "error")
-
+                   
                 }
             }
         }
