@@ -20,12 +20,20 @@
         android:label="fragment_reg_first"
         tools:layout="@layout/fragment_reg_first" >
         <action
-            android:id="@+id/action_regFirstFragment_to_regSecondFragment4"
-            app:destination="@id/regSecondFragment4" />
+            android:id="@+id/action_regFirstFragment_to_regSecondFragment"
+            app:destination="@id/regSecondFragment" />
+
+
     </fragment>
     <fragment
-        android:id="@+id/regSecondFragment4"
+        android:id="@+id/regSecondFragment"
         android:name="com.example.bankapp.ui.RegSecondFragment"
         android:label="fragment_reg_second"
-        tools:layout="@layout/fragment_reg_second" />
+        tools:layout="@layout/fragment_reg_second" >
+
+        <argument
+            android:name="userInfo"
+            app:argType="com.example.bankapp.UserInfo" />
+    </fragment>
+
 </navigation>
