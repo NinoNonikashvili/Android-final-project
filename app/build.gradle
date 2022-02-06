@@ -3,7 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'com.google.gms.google-services'
     id 'androidx.navigation.safeargs'
-    id("kotlin-parcelize")
+    id 'kotlin-parcelize'
 
 }
 
@@ -21,7 +21,6 @@ android {
         targetSdk 31
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

@@ -71,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:inputType="textPassword"
+            android:inputType="number"
             android:textColor="@color/black"
             android:theme="@style/cursorColor" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -174,6 +174,7 @@
             android:inputType="date"
             android:textColor="@color/black"
             android:theme="@style/cursorColor"
+            android:keyboardNavigationCluster="false"
 
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -203,6 +204,7 @@
             android:maxLength="3"
             android:textColor="@color/black"
             android:theme="@style/cursorColor"
+            android:keyboardNavigationCluster="false"
 
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -215,6 +217,7 @@
         android:letterSpacing="0.05"
         android:text="@string/next"
         android:textSize="26sp"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

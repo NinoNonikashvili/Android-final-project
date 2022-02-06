@@ -31,9 +31,10 @@
         android:label="fragment_reg_second"
         tools:layout="@layout/fragment_reg_second" >
 
+
         <argument
-            android:name="userInfo"
-            app:argType="com.example.bankapp.UserInfo" />
+            android:name="UserDetails"
+            app:argType="com.example.bankapp.UserData" />
     </fragment>
 
 </navigation>
