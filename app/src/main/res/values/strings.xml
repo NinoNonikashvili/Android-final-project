@@ -20,6 +20,7 @@
     <string name="repeat_password">გაიმეორეთ პაროლი</string>
     <string name="agreement">ვეთანხმები პირობებს</string>
     <string name="registration">რეგისტრაცია</string>
+    <string name="backToLoginPage">მთავარ გვერდზე დაბრუნება</string>
 
 
 </resources>

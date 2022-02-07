@@ -13,6 +13,12 @@
         <action
             android:id="@+id/action_authFragment_to_regFirstFragment"
             app:destination="@id/regFirstFragment" />
+        <argument
+            android:name="email"
+            app:argType="string"/>
+        <argument
+            android:name="password"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/regFirstFragment"
@@ -35,6 +41,11 @@
         <argument
             android:name="UserDetails"
             app:argType="com.example.bankapp.UserData" />
+        <action
+            android:id="@+id/action_regSecondFragment_to_authFragment"
+            app:destination="@id/authFragment"
+            app:popUpTo="@id/authFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

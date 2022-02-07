@@ -21,8 +21,17 @@ class RegFirstFragment : BaseFragment<FragmentRegFirstBinding>(FragmentRegFirstB
         sendDataToViewModel()
         addErrorIfIncorrectInput()
         setButtonState()
-        val action = RegFirstFragmentDirections.actionRegFirstFragmentToRegSecondFragment(userData)
         binding.next.setOnClickListener {
+            userData = UserData(
+                binding.userId.text.toString(),
+                binding.phoneNum.text.toString(),
+                binding.first6numbers.text.toString()+binding.last4numbers.text.toString(),
+                binding.expireDate.text.toString(),
+                binding.cvcCode.text.toString()
+            )
+            Log.d("TAG1", "$userData")
+            val action = RegFirstFragmentDirections.actionRegFirstFragmentToRegSecondFragment(userData)
+
             findNavController().navigate(action)
         }
     }
@@ -54,37 +63,36 @@ class RegFirstFragment : BaseFragment<FragmentRegFirstBinding>(FragmentRegFirstB
             binding.userIdWrapper.error = null
             if (!hasFocus&&!regViewModel.isUserIdValid)
                 binding.userIdWrapper.error = "Enter valid ID"
-            Log.d("TAG2", "entered id focus")
 
         }
         binding.phoneNum.setOnFocusChangeListener { v, hasFocus ->
             binding.mobileNumberWrapper.error = null
-            if (!hasFocus&&!regViewModel.isUserIdValid)
+            if (!hasFocus&&!regViewModel.isPhoneNumValid){
                 binding.mobileNumberWrapper.error = "Enter using format: 5XXXXXXXX"
-            Log.d("TAG2", "entered num focus")
+            }
 
         }
         binding.first6numbers.setOnFocusChangeListener { v, hasFocus ->
             binding.firstNumbersWrapper.error = null
-            if (!hasFocus&&!regViewModel.isUserIdValid)
+            if (!hasFocus&&!regViewModel.isFirstNumValid)
                 binding.firstNumbersWrapper.error = "Enter valid card digits"
 
         }
         binding.last4numbers.setOnFocusChangeListener { v, hasFocus ->
             binding.lastNumbersWrapper.error = null
-            if (!hasFocus&&!regViewModel.isUserIdValid)
+            if (!hasFocus&&!regViewModel.isLastNumValid)
                 binding.lastNumbersWrapper.error = "Enter valid card digits"
 
         }
         binding.expireDate.setOnFocusChangeListener { v, hasFocus ->
             binding.expireDateWrapper.error = null
-            if (!hasFocus&&!regViewModel.isUserIdValid)
+            if (!hasFocus&&!regViewModel.isExpDateValid)
                 binding.expireDateWrapper.error = "Enter valid date XX/XX"
 
         }
         binding.cvcCode.setOnFocusChangeListener { v, hasFocus ->
             binding.cvcCodeWrapper.error = null
-            if (!hasFocus&&!regViewModel.isUserIdValid)
+            if (!hasFocus&&!regViewModel.isCvcValid)
                 binding.cvcCodeWrapper.error = "Enter valid cvc"
 
         }
@@ -103,13 +111,7 @@ class RegFirstFragment : BaseFragment<FragmentRegFirstBinding>(FragmentRegFirstB
                 Log.d("Tag2", "date ${regViewModel.isExpDateValid}")
                 Log.d("Tag2", "cvc ${regViewModel.isCvcValid}")
                 //wrap inputs in user data class
-                userData = UserData(
-                    binding.userId.toString(),
-                    binding.phoneNum.toString(),
-                    binding.first6numbers.toString()+binding.last4numbers.toString(),
-                    binding.expireDate.toString(),
-                    binding.cvcCode.toString()
-                )
+
 
             }
         }
