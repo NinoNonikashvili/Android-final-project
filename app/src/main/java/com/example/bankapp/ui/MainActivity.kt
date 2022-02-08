@@ -1,11 +1,10 @@
-package com.example.bankapp
+package com.example.bankapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.google.firebase.auth.FirebaseAuth
 import com.example.bankapp.R
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

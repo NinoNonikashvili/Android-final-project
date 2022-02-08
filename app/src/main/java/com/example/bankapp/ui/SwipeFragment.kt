@@ -16,9 +16,7 @@ class SwipeFragment : BaseFragment<FragmentSwipeBinding>(FragmentSwipeBinding::i
     private lateinit var viewPager:ViewPager2
     private lateinit var swipeAdapter: SwipeAdapter
     override fun start() {
-        binding.topAppBar.setNavigationOnClickListener {
-            findNavController().navigate(R.id.action_swipeFragment_to_cryptoCurrenciesFragment)
-        }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

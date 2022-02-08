@@ -41,7 +41,7 @@
             app:boxStrokeColor="@color/blue"
             >
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/username"
+                android:id="@+id/email"
                 android:background="@android:color/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,8 +53,6 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordWrapper"
-            android:layout_below="@+id/usernameWrapper"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_below="@+id/emailWrapper"
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
@@ -97,11 +95,10 @@
             android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/forgotPassword"
-            android:layout_marginTop="50dp"
             android:backgroundTint="@color/blue"
             android:textSize="26sp"
-            android:letterSpacing="0.05"/>
+            android:letterSpacing="0.05"
+            android:text="@string/login"/>
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             style="@style/Widget.MaterialComponents.Button.TextButton"

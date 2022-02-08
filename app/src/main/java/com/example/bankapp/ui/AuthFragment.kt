@@ -7,11 +7,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.bankapp.R
-import androidx.navigation.fragment.findNavController
-import com.example.bankapp.R
 import com.example.bankapp.databinding.FragmentAuthBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.rpc.context.AttributeContext
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -35,17 +32,14 @@ private val loginViewModel:LoginViewModel by viewModels()
         setErrorIfIncorrectInput()
         setLoginBtnState()
         binding.login.setOnClickListener{
-            findNavController().navigate(AuthFragmentDirections.actionAuthFragmentToUserFragment())
             signIn(binding.email.text.toString(),binding.password.text.toString())
 
         }
 
         binding.register.setOnClickListener {
-            findNavController().navigate(R.id.action_authFragment_to_regFirstFragment)
+            findNavController().navigate(AuthFragmentDirections.actionAuthFragmentToRegFirstFragment())
         }
-        binding.login.setOnClickListener {
-            findNavController().navigate(R.id.action_authFragment_to_userProfileFragment)
-        }
+
     }
     private fun sendDataToViewModel(){
         binding.email.addTextChangedListener {
@@ -80,10 +74,16 @@ private val loginViewModel:LoginViewModel by viewModels()
     private fun signIn(email:String, password: String){
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener() {
             task->
-            if(task.isSuccessful)
+            if(task.isSuccessful) {
                 Log.d("TAG7", "log in success")
-            else
+                findNavController().navigate(AuthFragmentDirections.actionAuthFragmentToUserProfileFragment())
+
+            }
+            else {
                 Log.d("TAG7", "Log in failure", task.exception)
+                binding.emailWrapper.error = "ელ.ფოსტა ან პაროლი არასწორია"
+                binding.passwordWrapper.error = "ელ.ფოსტა ან პაროლი არასწორია"
+            }
         }
     }
 

@@ -15,7 +15,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding
             auth = FirebaseAuth.getInstance()
 
             if (auth.currentUser!=null)
-                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToUserFragment())
+                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToUserProfileFragment())
             else
                 findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToAuthFragment(""))
 
