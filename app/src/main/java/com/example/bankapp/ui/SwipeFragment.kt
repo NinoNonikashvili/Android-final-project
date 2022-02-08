@@ -4,7 +4,6 @@ package com.example.bankapp.ui
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.bankapp.R
 import com.example.bankapp.adapters.SwipeAdapter
