@@ -21,6 +21,22 @@
     <string name="agreement">ვეთანხმები პირობებს</string>
     <string name="registration">რეგისტრაცია</string>
     <string name="backToLoginPage">მთავარ გვერდზე დაბრუნება</string>
+    <string name="available_money">ხელმისაწვდომია</string>
+    <string name="log_out">Log out</string>
+    <string name="add_balance">ბალანსის შევსება</string>
+    <string name="enter_money">შეიყვანეთ თანხა</string>
+    <string name="gel">GEL</string>
+    <string name="currency">Currency</string>
+    <string name="enroll">შევსება</string>
+    <string name="conversion">კონვერტაცია</string>
+    <string name="_000_00">000.00</string>
+    <string name="sell_money_anount">გასაყიდი თანხა</string>
+    <string name="convert_to_usd">კონვერტაცია მოხდება USD-ში</string>
+    <string-array name="currencies">
+        <item>GEL</item>
+        <item>USD</item>
+        <item>EUR</item>
+    </string-array>
 
 
 </resources>

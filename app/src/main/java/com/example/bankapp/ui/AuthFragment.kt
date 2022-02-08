@@ -41,6 +41,9 @@ private val loginViewModel:LoginViewModel by viewModels()
         binding.register.setOnClickListener {
             findNavController().navigate(R.id.action_authFragment_to_regFirstFragment)
         }
+        binding.login.setOnClickListener {
+            findNavController().navigate(R.id.action_authFragment_to_userProfileFragment)
+        }
     }
     private fun sendDataToViewModel(){
         binding.email.addTextChangedListener {
