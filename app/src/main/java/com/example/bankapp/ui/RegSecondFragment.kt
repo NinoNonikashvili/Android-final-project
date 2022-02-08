@@ -39,9 +39,10 @@ class RegSecondFragment : BaseFragment<FragmentRegSecondBinding>(FragmentRegSeco
 
         }
         binding.goBack.setOnClickListener {
-            val email = binding.email.text.toString().trim()
             val password = binding.password.text.toString()
-            findNavController().navigate(RegSecondFragmentDirections.actionRegSecondFragmentToAuthFragment(email, password))
+
+            val action = RegSecondFragmentDirections.actionRegSecondFragmentToAuthFragment(password)
+            findNavController().navigate(action)
         }
 
     }
