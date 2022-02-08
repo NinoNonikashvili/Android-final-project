@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/currencyRates"
         android:icon="@drawable/ic__dollar"
-        android:title="ვალუტის კურსები"/>
+        android:title="ვალუტის კურსები"
+        />
 
     <item android:id="@+id/placeHolder"
         android:title=""

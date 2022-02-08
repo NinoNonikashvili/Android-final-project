@@ -19,8 +19,6 @@ private val loginViewModel:LoginViewModel by viewModels()
 
     override fun start() {
         auth = FirebaseAuth.getInstance()
-        val email = auth.currentUser?.email
-        Log.d("TAG5", "$email")
 
         if(auth.currentUser!=null){
             Log.d("TAG5", "entered here")
