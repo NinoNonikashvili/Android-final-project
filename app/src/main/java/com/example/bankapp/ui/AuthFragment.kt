@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 class AuthFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::inflate) {
 private lateinit var auth: FirebaseAuth
 
+
     override fun start() {
         auth = FirebaseAuth.getInstance()
         val email = auth.currentUser?.email
