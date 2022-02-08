@@ -1,4 +1,4 @@
-package com.example.bankapp.Crypto
+package com.example.bankapp.crypto
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

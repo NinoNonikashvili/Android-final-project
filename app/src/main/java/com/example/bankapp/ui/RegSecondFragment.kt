@@ -8,10 +8,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.bankapp.RegSecondVIewModel
-import com.example.bankapp.UserData
+import com.example.bankapp.model.UserData
 import com.example.bankapp.databinding.FragmentRegSecondBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.flow.collect
@@ -98,7 +97,7 @@ class RegSecondFragment : BaseFragment<FragmentRegSecondBinding>(FragmentRegSeco
         }
 
     }
-    private fun saveDataInFireStore(userInfo:UserData){
+    private fun saveDataInFireStore(userInfo: UserData){
         val userId = auth.currentUser?.uid.toString()
         db.collection(userId).add(userInfo)
             .addOnSuccessListener { Log.d("TAG1", "added successfully") }

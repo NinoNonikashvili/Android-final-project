@@ -1,12 +1,11 @@
 package com.example.bankapp.ui
 
 
-import android.content.Context
 import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.bankapp.Crypto.CryptoViewModel
+import com.example.bankapp.crypto.CryptoViewModel
 import com.example.bankapp.adapters.CryptoCurrenciesAdapter
 import com.example.bankapp.databinding.FragmentCryptoCurrenciesBinding
 import dagger.hilt.android.AndroidEntryPoint

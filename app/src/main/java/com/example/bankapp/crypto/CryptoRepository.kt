@@ -1,4 +1,4 @@
-package com.example.bankapp.Crypto
+package com.example.bankapp.crypto
 
 import com.example.bankapp.api.CryptoApi
 import com.example.bankapp.model.CryptoData

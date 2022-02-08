@@ -1,6 +1,6 @@
 package com.example.bankapp.di
 
-import com.example.bankapp.Crypto.CryptoRepository
+import com.example.bankapp.crypto.CryptoRepository
 import com.example.bankapp.api.CryptoApi
 import dagger.Module
 import dagger.Provides
