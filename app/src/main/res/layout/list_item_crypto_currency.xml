@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="5dp"
+    android:layout_margin="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/TV_CryptoCurrencyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/crypto_currency_name"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/TV_CryptoCurrencyDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cryptoDate"
+            android:textStyle="italic"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/RL_logoWrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:layout_marginTop="80dp"
+        >
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/IV_CryptoCurrencyLogo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/ic_baseline_monetization_on_24"
+            />
+        <TextView
+            android:id="@+id/TV_cryptoCurrencySymbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/crypto_currency_symbol"
+            android:textSize="30sp"
+            android:layout_toEndOf="@+id/IV_CryptoCurrencyLogo"
+            android:layout_marginStart="10dp"
+            />
+
+        <TextView
+            android:id="@+id/TV_volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/IV_CryptoCurrencyLogo"
+            android:layout_marginTop="15dp"
+            android:text= "@string/cryptoVolume"/>
+        <TextView
+            android:id="@+id/TV_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TV_volume"
+            android:text="@string/CryptoPriceChange"
+
+            />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:paddingTop="10dp"
+            >
+
+            <TextView
+                android:id="@+id/TV_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cryptoPrice"
+                android:layout_marginBottom="10dp"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:id="@+id/TV_marketCap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cryptoCap"
+                android:layout_below="@+id/TV_price"
+                android:textSize="16sp"
+                />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+
+</com.google.android.material.card.MaterialCardView>

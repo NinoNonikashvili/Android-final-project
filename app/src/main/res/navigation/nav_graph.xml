@@ -67,4 +67,41 @@
         android:label="fragment_user"
         tools:layout="@layout/fragment_user" />
 
+    app:startDestination="@id/authFragment">
+
+    <fragment
+        android:id="@+id/currenciesFragment"
+        android:name="com.example.bankapp.ui.CurrenciesFragment"
+        android:label="fragment_currencies"
+        tools:layout="@layout/fragment_currencies" >
+        <action
+            android:id="@+id/action_currenciesFragment_to_calculatorFragment"
+            app:destination="@id/calculatorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/calculatorFragment"
+        android:name="com.example.bankapp.ui.CalculatorFragment"
+        android:label="fragment_calculator"
+        tools:layout="@layout/fragment_calculator" />
+    <fragment
+        android:id="@+id/swipeFragment"
+        android:name="com.example.bankapp.ui.SwipeFragment"
+        android:label="fragment_swipe"
+        tools:layout="@layout/fragment_swipe" >
+        <action
+            android:id="@+id/action_swipeFragment_to_cryptoCurrenciesFragment"
+            app:destination="@id/cryptoCurrenciesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.example.bankapp.ui.AuthFragment"
+        android:label="AuthFragment" >
+        <action
+            android:id="@+id/action_authFragment_to_swipeFragment"
+            app:destination="@id/swipeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cryptoCurrenciesFragment"
+        android:name="com.example.bankapp.ui.CryptoCurrenciesFragment"
+        android:label="CryptoCurrenciesFragment" />
 </navigation>

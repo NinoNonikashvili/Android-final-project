@@ -7,6 +7,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.bankapp.R
+import androidx.navigation.fragment.findNavController
+import com.example.bankapp.R
 import com.example.bankapp.databinding.FragmentAuthBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.rpc.context.AttributeContext
