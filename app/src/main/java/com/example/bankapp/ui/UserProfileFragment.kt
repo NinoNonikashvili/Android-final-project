@@ -15,12 +15,29 @@ class UserProfileFragment : BaseFragment<FragmentUserProfileBinding>(FragmentUse
         val currencies = resources.getStringArray(R.array.currencies)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, currencies)
         binding.currency.setAdapter(arrayAdapter)
+
+        //navigate to conversion fragment
         binding.converterButton.setOnClickListener {
-            findNavController().navigate(UserProfileFragmentDirections.actionUserProfileFragmentToSwipeFragment())
+            findNavController().navigate(UserProfileFragmentDirections.actionUserProfileFragmentToConversionFragment())
         }
-        binding.cardNumber.setOnClickListener {
-            findNavController().navigate(UserProfileFragmentDirections.actionUserProfileFragmentToCryptoCurrenciesFragment())
+      //navigate to currencies or cryptocurrencies fragment
+        binding.bottomNavView.setOnItemSelectedListener{ item->
+            when(item.itemId) {
+                R.id.currencyRates -> {
+                    findNavController().navigate(UserProfileFragmentDirections.actionUserProfileFragmentToSwipeFragment())
+
+                    true
+                }
+                R.id.cryptoCurrencyRates -> {
+                    findNavController().navigate(UserProfileFragmentDirections.actionUserProfileFragmentToCryptoCurrenciesFragment())
+                    true
+                }
+                else ->
+                    false
+            }
+
         }
+        //log out
         binding.appBar.setOnMenuItemClickListener {
             it->
             when(it.itemId){

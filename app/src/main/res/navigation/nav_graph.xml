@@ -101,5 +101,13 @@
             app:destination="@id/authFragment"
             app:popUpTo="@id/authFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_conversionFragment"
+            app:destination="@id/conversionFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/conversionFragment"
+        android:name="com.example.bankapp.ui.ConversionFragment"
+        android:label="fragment_conversion"
+        tools:layout="@layout/fragment_conversion" />
 </navigation>
