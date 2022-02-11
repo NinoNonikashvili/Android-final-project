@@ -3,13 +3,10 @@ package com.example.bankapp.adapters
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import coil.ImageLoader
-import coil.decode.SvgDecoder
-import coil.load
+
 import com.example.bankapp.databinding.ListItemCryptoCurrencyBinding
 import com.example.bankapp.extensions.loadSvg
 import com.example.bankapp.model.CryptoDataItem

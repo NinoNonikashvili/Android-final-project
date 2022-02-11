@@ -11,6 +11,9 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::infl
             findNavController().navigate(R.id.action_authFragment_to_swipeFragment)
 
         }
+        binding.register.setOnClickListener {
+            findNavController().navigate(R.id.action_authFragment_to_currenciesFragment)
+        }
 
     }
 

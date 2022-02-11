@@ -1,6 +1,8 @@
 package com.example.bankapp.extensions
 
+import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.view.isVisible
 import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
@@ -19,4 +21,14 @@ fun AppCompatImageView.loadSvg(url: String) {
         .build()
 
     imageLoader.enqueue(request)
+}
+
+fun Double.roundDecimal(digit: Int) = "%.${digit}f".format(this)
+
+fun View.visible() {
+    this.isVisible = true
+}
+
+fun View.invisible() {
+    this.isVisible = false
 }

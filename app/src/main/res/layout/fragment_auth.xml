@@ -91,28 +91,29 @@
             android:letterSpacing="0.05"
 
             />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/login"
-            android:layout_below="@+id/forgotPassword"
-            android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login"
+            android:layout_below="@+id/forgotPassword"
+            android:layout_marginTop="50dp"
             android:backgroundTint="@color/blue"
-            android:textSize="26sp"
-            android:letterSpacing="0.05"/>
+            android:letterSpacing="0.05"
+            android:text="@string/login"
+            android:textSize="26sp" />
+
         <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
+            android:id="@+id/register"
             style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:textColor="@color/blue"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/login"
             android:layout_marginTop="20dp"
-            android:id="@+id/register"
-            android:text="@string/register"
-            android:textSize="26sp"
             android:letterSpacing="0.05"
-            />
+            android:text="@string/register"
+            android:textColor="@color/blue"
+            android:textSize="26sp" />
 
     </RelativeLayout>
 </FrameLayout>
