@@ -76,17 +76,18 @@
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
+
         <TextView
             android:id="@+id/forgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_below="@+id/passwordWrapper"
             android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:letterSpacing="0.05"
             android:text="@string/forgotPassword"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:letterSpacing="0.05"
 
             />
         <com.google.android.material.button.MaterialButton

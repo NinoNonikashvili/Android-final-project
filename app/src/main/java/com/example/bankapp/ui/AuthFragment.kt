@@ -6,7 +6,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.bankapp.R
 import com.example.bankapp.databinding.FragmentAuthBinding
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.flow.collect
@@ -37,6 +36,7 @@ private val loginViewModel:LoginViewModel by viewModels()
         binding.register.setOnClickListener {
             findNavController().navigate(AuthFragmentDirections.actionAuthFragmentToRegFirstFragment())
         }
+
 
     }
     private fun sendDataToViewModel(){
