@@ -6,6 +6,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.ConversionFragment">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/convertButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
@@ -23,31 +33,30 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-
-    <TextView
-        android:id="@+id/convertToUSD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="80dp"
-        android:text="@string/convert_to_usd"
-        android:textColor="@color/blue"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+<!--    <TextView-->
+<!--        android:id="@+id/convertToUSD"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:layout_marginTop="80dp"-->
+<!--        android:text="@string/convert_to_usd"-->
+<!--        android:textColor="@color/blue"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold" />-->
 
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/forSaleMoneyWrapper"
-        app:layout_constraintTop_toBottomOf="@id/convertToUSD"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="80dp"
         android:layout_marginHorizontal="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/sell_money_anount"
         app:errorEnabled="true"
+        app:layout_constraintTop_toTopOf="parent"
         android:textColorHint="@color/black"
         app:hintTextColor="@color/blue"
         app:boxStrokeColor="@color/blue"
@@ -63,17 +72,37 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TIL_convertTo"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="30dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/forSaleMoneyWrapper"
+        android:layout_marginTop="30dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:endIconTint="@color/blue"
+        app:hintEnabled="false">
+
+        <AutoCompleteTextView
+            android:id="@+id/ATV_currenciesDropDown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/convertedMoney"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/forSaleMoneyWrapper"
+        app:layout_constraintTop_toBottomOf="@id/TIL_convertTo"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="15dp"
-        android:text="@string/_000_00"
-        android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <com.google.android.material.button.MaterialButton
