@@ -16,10 +16,13 @@ class UserProfileFragment : BaseFragment<FragmentUserProfileBinding>(FragmentUse
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, currencies)
         binding.currency.setAdapter(arrayAdapter)
 
-        //navigate to conversion fragment
         binding.converterButton.setOnClickListener {
-            findNavController().navigate(UserProfileFragmentDirections.actionUserProfileFragmentToConversionFragment())
+            findNavController().navigate(UserProfileFragmentDirections.actionUserProfileFragmentToCalculatorFragment())
         }
+        //navigate to conversion fragment
+//        binding.converterButton.setOnClickListener {
+//            findNavController().navigate(UserProfileFragmentDirections.actionUserProfileFragmentToConversionFragment())
+//        }
       //navigate to currencies or cryptocurrencies fragment
         binding.bottomNavView.setOnItemSelectedListener{ item->
             when(item.itemId) {

@@ -104,6 +104,9 @@
         <action
             android:id="@+id/action_userProfileFragment_to_conversionFragment"
             app:destination="@id/conversionFragment" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_calculatorFragment"
+            app:destination="@id/calculatorFragment" />
     </fragment>
     <fragment
         android:id="@+id/conversionFragment"

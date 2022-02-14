@@ -61,6 +61,33 @@
     <string name="cryptoVolume">"Volume: "</string>
     <string name="notAvailable">"NA"</string>
     <string name="CryptoPriceChange">"Price Change: "</string>
+    <string-array name="currency_codes">
+        <item>AED</item>
+        <item>AMD</item>
+        <item>AVD</item>
+        <item>AZN</item>
+        <item>BGN</item>
+        <item>CAD</item>
+        <item>CHF</item>
+        <item>CNY</item>
+        <item>CZK</item>
+        <item>DKK</item>
+        <item>EUR</item>
+        <item>GBP</item>
+        <item>ILS</item>
+        <item>JPY</item>
+        <item>NOK</item>
+        <item>PLN</item>
+        <item>QAR</item>
+        <item>RUR</item>
+        <item>SAR</item>
+        <item>SEK</item>
+        <item>TRY</item>
+        <item>UKG</item>
+        <item>USD</item>
+        <item>GEL</item>
+    </string-array>
+
 
 
 

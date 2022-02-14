@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.CalculatorFragment">
 
 
@@ -11,14 +11,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        app:cardElevation="5dp"
-        >
+        app:cardElevation="5dp">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:padding="30dp">
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true" />
 
             <TextView
                 android:id="@+id/TV_convertFrom"
@@ -43,8 +50,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/TV_convertFrom"
 
-                app:boxStrokeWidthFocused="0dp"
                 app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
                 app:endIconTint="@color/blue"
                 app:hintEnabled="false">
 
@@ -62,71 +69,77 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/TV_convertFrom"
-                app:boxStrokeWidthFocused="0dp"
+                android:layout_alignParentEnd="true"
                 app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
                 app:endIconTint="@color/blue"
-                app:hintEnabled="false"
-                android:layout_alignParentEnd="true">
+                app:hintEnabled="false">
 
                 <AutoCompleteTextView
                     android:id="@+id/ATV_currenciesDropDown2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/transparent"
-                    android:inputType="none"
-                    />
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/IV_convert"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/TIL_convertFrom"
-                android:layout_margin="20dp"
                 android:layout_centerHorizontal="true"
-                app:srcCompat="@drawable/ic_baseline_autorenew_24"
-                />
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                app:srcCompat="@drawable/ic_baseline_autorenew_24" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_below="@id/IV_convert"
                 android:id="@+id/TIL_amountToConvert"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/typeAmount"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/IV_convert"
+                android:hint="@string/typeAmount"
+                android:maxLines="1"
+                android:textColorHint="@color/black"
+                android:theme="@style/cursorColorBlack"
                 app:boxStrokeColor="@color/grey"
                 app:hintTextColor="@color/black"
-                android:textColorHint="@color/black"
-                android:maxLines="1"
-                android:theme="@style/cursorColorBlack"
 
                 >
+
                 <com.google.android.material.textfield.TextInputEditText
+                    android:maxLines="1"
                     android:id="@+id/ET_amountToConvert"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    />
+                    android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TIL_convertedMoney"
-                android:layout_width="100dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/IV_convert"
                 android:layout_alignParentEnd="true"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:boxStrokeColor="@color/grey"
                 android:maxLines="1"
                 android:theme="@style/cursorColorBlack"
-                >
+                app:boxStrokeColor="@color/grey">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TV_convertedMoney"
-                    android:layout_width="match_parent"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/typeAmount"
+                    android:maxLines="1"
                     android:enabled="false"
-                    />
+                    android:text="@string/typeAmount"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </RelativeLayout>
