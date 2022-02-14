@@ -15,6 +15,7 @@ import com.example.bankapp.extensions.roundDecimal
 import com.example.bankapp.extensions.visible
 import com.example.bankapp.model.ConvertInfo
 import com.example.bankapp.util.ApiState
+import com.example.bankapp.viewModels.CalculationSharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -22,7 +23,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class ConversionFragment : BaseFragment<FragmentConversionBinding>(FragmentConversionBinding::inflate) {
 
-    private val convertViewModel: ConvertViewModel by viewModels()
+    private val convertViewModel: CalculationSharedViewModel by viewModels()
 
     override fun start() {
         setAdapter()

@@ -166,27 +166,7 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/currencyWrapper"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="@string/currency"
-                    android:textColorHint="@color/black"
-                    app:boxStrokeColor="@color/blue"
-                    app:errorEnabled="true"
-                    app:hintTextColor="@color/blue"
-                    app:layout_constraintTop_toBottomOf="@id/addMoneyWrapper">
 
-
-                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                        android:id="@+id/currency"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="none" />
-
-                </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/enroll"
@@ -199,7 +179,7 @@
                     android:text="@string/enroll"
                     android:textSize="26sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/currencyWrapper" />
+                    app:layout_constraintTop_toBottomOf="@id/addMoneyWrapper" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

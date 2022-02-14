@@ -1,6 +1,5 @@
 package com.example.bankapp.currency
 
-import android.util.Log.d
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bankapp.util.ApiState

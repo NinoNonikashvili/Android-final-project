@@ -9,13 +9,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.bankapp.R
-import com.example.bankapp.currency.ConvertViewModel
 import com.example.bankapp.databinding.FragmentCalculatorBinding
 import com.example.bankapp.extensions.invisible
 import com.example.bankapp.extensions.roundDecimal
 import com.example.bankapp.extensions.visible
 import com.example.bankapp.model.ConvertInfo
 import com.example.bankapp.util.ApiState
+import com.example.bankapp.viewModels.CalculationSharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class CalculatorFragment : BaseFragment<FragmentCalculatorBinding>(FragmentCalculatorBinding::inflate) {
 
-    private val convertViewModel: ConvertViewModel by viewModels()
+    private val convertViewModel: CalculationSharedViewModel by viewModels()
 
     override fun start() {
         setAdapter()
