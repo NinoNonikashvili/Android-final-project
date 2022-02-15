@@ -27,16 +27,22 @@ class UserProfileFragment : BaseFragment<FragmentUserProfileBinding>(FragmentUse
         setAmountUI()
         //transfer money
         transferMoneyToYourAccount()
+        addTabOnUserPage()
+        navClicks()
+        logout()
 
 
+    }
+    private fun navClicks() {
+        //navigate to conversion fragment
 
-//        navigate to conversion fragment
         binding.converterButton.setOnClickListener {
             findNavController().navigate(UserProfileFragmentDirections.actionUserProfileFragmentToConversionFragment())
         }
-      //navigate to currencies or cryptocurrencies fragment
-        binding.bottomNavView.setOnItemSelectedListener{ item->
-            when(item.itemId) {
+        //navigate to currencies or cryptocurrencies fragment
+
+        binding.bottomNavView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
                 R.id.currencyRates -> {
                     findNavController().navigate(UserProfileFragmentDirections.actionUserProfileFragmentToSwipeFragment())
 
@@ -49,11 +55,11 @@ class UserProfileFragment : BaseFragment<FragmentUserProfileBinding>(FragmentUse
                 else ->
                     false
             }
-
         }
-        //log out
+    }
+    private fun logout(){
         binding.appBar.setOnMenuItemClickListener {
-            it->
+                it->
             when(it.itemId){
                 R.id.settings-> {
                     auth.signOut()
@@ -62,23 +68,27 @@ class UserProfileFragment : BaseFragment<FragmentUserProfileBinding>(FragmentUse
                     true
                 }else-> false
 
+            }
         }
-        }
-
-
     }
 
     private fun transferMoneyToYourAccount(){
         binding.enroll.setOnClickListener {
-            val amount = binding.addMoney.text.toString().toDouble()
-            addViewModel.enroll(amount)
-            updateAmountUI()
+            val amount = binding.addMoney.text.toString()
+
+            if(amount.isNotEmpty()){
+                addViewModel.enroll(amount.toDouble())
+                updateAmountUI()
+            }
+
         }
     }
     private fun setAmountUI(){
         db.collection(auth.currentUser?.uid.toString()).document("Total").get().addOnSuccessListener {
             document->
-            binding.amount.text = document["total"].toString()
+             document["total"]?.let{
+                    binding.amount.text = it.toString()
+            }
         }
     }
     private fun updateAmountUI() {
@@ -88,4 +98,10 @@ class UserProfileFragment : BaseFragment<FragmentUserProfileBinding>(FragmentUse
             }
         }
     }
+    private fun addTabOnUserPage(){
+        binding.currenciesTabLayout.addTab(
+            binding.currenciesTabLayout.newTab().setText("newTab")
+        )
+    }
+
 }

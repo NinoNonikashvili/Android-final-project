@@ -8,7 +8,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.bankapp.R
-import com.example.bankapp.currency.ConvertViewModel
 import com.example.bankapp.databinding.FragmentConversionBinding
 import com.example.bankapp.extensions.invisible
 import com.example.bankapp.extensions.roundDecimal

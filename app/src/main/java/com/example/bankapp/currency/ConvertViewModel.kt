@@ -11,11 +11,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ConvertViewModel @Inject constructor(private val currencyRepository: CurrencyRepository) :
+class CalculateViewModel @Inject constructor(
+    private val currencyRepository: CurrencyRepository) :
     ViewModel() {
 
-    private val _convertStateFlow: MutableStateFlow<ApiState> = MutableStateFlow(ApiState.Empty)
-    val convertStateFlow: StateFlow<ApiState> = _convertStateFlow
+    private val _calculateStateFlow: MutableStateFlow<ApiState> = MutableStateFlow(ApiState.Empty)
+    val calculateStateFlow: StateFlow<ApiState> = _calculateStateFlow
 
 
     fun convert(
@@ -24,17 +25,17 @@ class ConvertViewModel @Inject constructor(private val currencyRepository: Curre
         toCurrency: String
     ) {
         viewModelScope.launch {
-            _convertStateFlow.value = ApiState.Loading
+            _calculateStateFlow.value = ApiState.Loading
             val resultRates =
                 currencyRepository.getConvertInfo(amount, fromCurrency, toCurrency)
 
             when (resultRates) {
                 is Resource.Error -> {
-                    _convertStateFlow.value =
+                    _calculateStateFlow.value =
                         ApiState.Failure(resultRates.message!!)
                 }
                 is Resource.Success -> {
-                    _convertStateFlow.value = ApiState.Success(resultRates.data)
+                    _calculateStateFlow.value = ApiState.Success(resultRates.data)
                 }
             }
         }

@@ -9,6 +9,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.bankapp.R
+import com.example.bankapp.currency.CalculateViewModel
 import com.example.bankapp.databinding.FragmentCalculatorBinding
 import com.example.bankapp.extensions.invisible
 import com.example.bankapp.extensions.roundDecimal
@@ -23,7 +24,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class CalculatorFragment : BaseFragment<FragmentCalculatorBinding>(FragmentCalculatorBinding::inflate) {
 
-    private val convertViewModel: CalculationSharedViewModel by viewModels()
+    private val calculateViewModel: CalculateViewModel by viewModels()
 
     override fun start() {
         setAdapter()
@@ -50,14 +51,14 @@ class CalculatorFragment : BaseFragment<FragmentCalculatorBinding>(FragmentCalcu
         val fromCurrency = binding.ATVCurrenciesDropDown1.text.toString()
         val toCurrency = binding.ATVCurrenciesDropDown2.text.toString()
         val amount = binding.ETAmountToConvert.text.toString()
-        convertViewModel.convert(amount, fromCurrency, toCurrency)
+        calculateViewModel.convert(amount, fromCurrency, toCurrency)
 
     }
 
     private fun observe() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                convertViewModel.convertStateFlow.collect {
+                calculateViewModel.calculateStateFlow.collect {
                     when (it) {
                         is ApiState.Loading -> {
                             binding.progressBar.visible()
