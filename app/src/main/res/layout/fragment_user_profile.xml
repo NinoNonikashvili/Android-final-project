@@ -103,11 +103,6 @@
                     app:layout_constraintStart_toStartOf="@id/parentLayout"
                     app:layout_constraintTop_toBottomOf="@id/amount">
 
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="currency1"
-                        />
 
 
                 </com.google.android.material.tabs.TabLayout>
