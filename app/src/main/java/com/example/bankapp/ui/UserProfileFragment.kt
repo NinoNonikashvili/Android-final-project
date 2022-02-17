@@ -6,8 +6,10 @@ import androidx.core.view.children
 import androidx.core.view.get
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.bankapp.R
+import com.example.bankapp.currency.CalculateViewModel
 import com.example.bankapp.databinding.FragmentUserProfileBinding
 import com.example.bankapp.extensions.roundDecimal
 import com.example.bankapp.viewModels.CalculationSharedViewModel
@@ -23,16 +25,19 @@ import kotlinx.coroutines.launch
 
 class UserProfileFragment : BaseFragment<FragmentUserProfileBinding>(FragmentUserProfileBinding::inflate) {
     private lateinit var auth: FirebaseAuth
-    private val addViewModel: CalculationSharedViewModel by viewModels()
-    val db = Firebase.firestore
+    private val viewModel: CalculationSharedViewModel by viewModels()
+
 
     override fun start() {
         auth = FirebaseAuth.getInstance()
-        //show currencies on user page
-        setAmountUI()
+        //request to fireStore
+        viewModel.retrieveData()
+        //set UI according to the received data
+        setUI()
+
         //transfer money
         transferMoneyToYourAccount()
-        addTabOnUserPage()
+//        addTabOnUserPage()
         navClicks()
         logout()
 
@@ -81,53 +86,56 @@ class UserProfileFragment : BaseFragment<FragmentUserProfileBinding>(FragmentUse
     }
 
     private fun transferMoneyToYourAccount() {
-        binding.enroll.setOnClickListener {
+        binding.addMoneyBtn.setOnClickListener {
             val amount = binding.addMoney.text.toString()
 
             if (amount.isNotEmpty()) {
-                addViewModel.addMoney(amount.toDouble())
-                updateAmountUI()
+                viewModel.addMoney(amount.toDouble())
             }
 
         }
     }
 
-    private fun setAmountUI() {
-        db.collection(auth.currentUser?.uid.toString()).document("Total").get()
-            .addOnSuccessListener { document ->
-                document["total"]?.let {
-                    binding.amount.text = it.toString()
-                }
-            }
-    }
 
-    private fun updateAmountUI() {
-        lifecycleScope.launchWhenCreated {
-            addViewModel.total.collect {
-                binding.amount.text = it.toString()
+        //viewmodel.retrievedatafromdb()
+        //totalStateFlow.collect{
+        //binding.amount.text = it.toString}
+        //currencyListStateFLow.collect{
+        //addTabOnUserPage()}
+
+    private fun setUI(){
+        Log.d("TAG2", "set ui")
+
+        lifecycleScope.launch {   //repeatOnLifecycle
+            viewModel.totalAmount.collect {
+                binding.amount.text = it.roundDecimal(2)
+                Log.d("TAG2", "collected Total")
+
             }
         }
-    }
-
-    private fun addTabOnUserPage() {
-        val tabList = mutableMapOf<String, Int>()
-        var count = 0
-        addViewModel.updateTabs()
         lifecycleScope.launch {
-            addViewModel.tab.collect {
-                it.forEach { (currencyName, currencyAmount) ->
-                    if(tabList.keys.contains(currencyName)){
-                        binding.currenciesTabLayout.getTabAt(tabList[currencyName]!!)
-                            ?.text = "${currencyAmount.toString().toDouble().roundDecimal(2)} $currencyName"
-                    }else{
-                        tabList[currencyName] = count
-                        binding.currenciesTabLayout.addTab(binding.currenciesTabLayout.newTab()
-                            .setText("${currencyAmount.toString().toDouble().roundDecimal(2)} $currencyName"), count)
-                        count++
-                    }
-                }
-
+            viewModel.listFlag.collect {
+                Log.d("TAG2", "collected currencyList ${viewModel._currencyList}")
+                //send map to updateTabs function
+                addTabOnUserPage(viewModel._currencyList)
             }
         }
+
+
+    }
+
+
+
+    private fun addTabOnUserPage(currencyMap:MutableMap<String, Any>) {
+
+        Log.d("TAG2", "show tabs list  $currencyMap")
+
+        Log.d("TAG2", "started to update tabs")
+                binding.currenciesTabLayout.removeAllTabs()
+        currencyMap.forEach { (currencyName, currencyAmount) ->
+            binding.currenciesTabLayout.addTab(binding.currenciesTabLayout.newTab()
+                .setText("${currencyAmount.toString().toDouble().roundDecimal(2)} $currencyName"))
+        }
+
     }
 }

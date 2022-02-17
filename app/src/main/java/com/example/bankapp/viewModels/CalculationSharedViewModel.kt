@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bankapp.currency.CurrencyRepository
-import com.example.bankapp.model.NewCurrencyTab
 import com.example.bankapp.model.Total
 import com.example.bankapp.util.ApiState
 import com.example.bankapp.util.Resource
@@ -25,15 +24,37 @@ class CalculationSharedViewModel @Inject constructor(
     ViewModel() {
     val db = Firebase.firestore
     private val auth = FirebaseAuth.getInstance()
-    private val currencyList = mutableMapOf<String, Any>()
     private val userId = auth.currentUser?.uid.toString()
-    private var totalAmount = Total(0.0)
-    var total = MutableStateFlow(0.0)
-    private val _convertStateFlow: MutableStateFlow<ApiState> = MutableStateFlow(ApiState.Empty)
-    val convertStateFlow: StateFlow<ApiState> = _convertStateFlow
-    private val _tab = MutableStateFlow(mutableMapOf<String, Any>())
-    val tab:StateFlow<MutableMap<String, Any>> = _tab
 
+    private var _totalAmount = MutableStateFlow(0.0)
+    val totalAmount = _totalAmount
+
+    private var _listFlag = MutableStateFlow(0)
+    val listFlag = _listFlag
+
+    private var _convertStateFlow: MutableStateFlow<ApiState> = MutableStateFlow(ApiState.Empty)
+    val convertStateFlow: StateFlow<ApiState> = _convertStateFlow
+
+     var _currencyList = mutableMapOf<String, Any>()
+    val currencyList = _currencyList
+
+
+    fun retrieveData(){
+        db.collection(userId).document("Total").get().addOnSuccessListener {
+            it.data?.get("total")?.let{
+                _totalAmount.value = it.toString().toDouble()
+            }
+            Log.d("TAG2", "total amount is received from db successfully")
+        }
+        db.collection(userId).document("CurrencyList").get().addOnSuccessListener {
+            it?.data?.let {
+                _currencyList =it
+                _listFlag.value +=1
+            }
+            Log.d("TAG2", "currencyList amount is received from db successfully")
+
+        }
+    }
 
     fun convert(
         amount: String,
@@ -70,9 +91,10 @@ class CalculationSharedViewModel @Inject constructor(
                     }
                     is Resource.Success -> {
                         _convertStateFlow.value = ApiState.Success(resultRates.data)
+
+                       //update stateflows, update db
                         updateCurrencyList(resultRates.data!!.value, toCurrency)
                         updateCurrencyList(-resultRates.data!!.amount, "GEL")
-                        _tab.value = currencyList
                         Log.d("TAG2", "changed in convert function")
 
 
@@ -87,19 +109,17 @@ class CalculationSharedViewModel @Inject constructor(
     fun addMoney(amount:Double){
         db.collection(userId).document("Total").get().addOnSuccessListener { document ->
 
-            totalAmount.Total = document.data?.get("total")?.toString()?.toDouble()?:0.0
-            totalAmount.Total += amount
-            total.value = totalAmount.Total
-            updateTotal()
+            var totalAmountDb = document.data?.get("total")?.toString()?.toDouble()?:0.0
+            totalAmountDb += amount
+            _totalAmount.value= totalAmountDb
+
             updateCurrencyList(amount, "GEL")
+            db.collection(userId).document("Total").set(Total(_totalAmount.value))
 
         }
 
     }
 
-    private fun updateTotal(){
-        db.collection(userId).document("Total").set( totalAmount)
-    }
     private fun updateCurrencyList( enrolledMoney:Double, toCurrency:String){
         var oldValue = 0.0
         db.collection(userId).document("CurrencyList")
@@ -110,24 +130,28 @@ class CalculationSharedViewModel @Inject constructor(
 
                 val newValue = oldValue + enrolledMoney
 
-                currencyList[toCurrency] = newValue
+                _currencyList[toCurrency] = newValue
+                _listFlag.value += 1
+                Log.d("TAG2", " ${_currencyList}currencyList updated, must trigger collected currencyList and tabs update")
 
                 db.collection(auth.currentUser?.uid.toString()).document("CurrencyList")
-                    .set(currencyList, SetOptions.merge())
+                    .set(_currencyList, SetOptions.merge())
             }
+        Log.d("TAG2", "$oldValue, oldvalue outside the db body ")
+
 
     }
-     fun updateTabs(){
-         Log.d("TAG2", "entered here")
-
-         db.collection(userId).document("CurrencyList").get().addOnSuccessListener {
-            it.data?.let { it ->
-                _tab.value = it
-                Log.d("TAG2", "list changed $it")
-            }
-        }
-
-    }
+//     private fun updateTabs(){
+//         Log.d("TAG2", "entered here")
+//
+//         db.collection(userId).document("CurrencyList").get().addOnSuccessListener {
+//            it.data?.let { it ->
+//                _tab.value = it
+//                Log.d("TAG2", "list changed $it")
+//            }
+//        }
+//
+//    }
 
 }
 
