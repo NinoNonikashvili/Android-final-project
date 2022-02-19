@@ -1,11 +1,12 @@
 package com.example.bankapp.ui
 
-import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.bankapp.R
 import com.example.bankapp.adapters.CurrencyAdapter
 import com.example.bankapp.currency.CurrencyViewModel
 import com.example.bankapp.databinding.FragmentCurrenciesBinding
@@ -13,6 +14,7 @@ import com.example.bankapp.extensions.invisible
 import com.example.bankapp.extensions.visible
 import com.example.bankapp.model.Rate
 import com.example.bankapp.util.ApiState
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -54,8 +56,9 @@ class CurrenciesFragment :
                         is ApiState.Failure -> {
                             binding.currencyRecycler.invisible()
                             binding.progressBar.invisible()
-                            Toast.makeText(requireContext(), it.msg, Toast.LENGTH_SHORT).show()
-                        }
+                            Snackbar.make(binding.progressBar, it.msg, Snackbar.LENGTH_LONG)
+                                .setBackgroundTint(ContextCompat.getColor(requireContext(), R.color.blue))
+                                .show()                        }
                         is ApiState.Success<*> -> {
                             binding.currencyRecycler.visible()
                             binding.progressBar.invisible()

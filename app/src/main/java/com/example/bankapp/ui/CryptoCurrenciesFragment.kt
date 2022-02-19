@@ -1,13 +1,21 @@
 package com.example.bankapp.ui
 
 
+import android.graphics.Color
 import android.util.Log
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.bankapp.R
 import com.example.bankapp.crypto.CryptoViewModel
 import com.example.bankapp.adapters.CryptoCurrenciesAdapter
 import com.example.bankapp.databinding.FragmentCryptoCurrenciesBinding
+import com.example.bankapp.extensions.invisible
+import com.example.bankapp.extensions.visible
+import com.example.bankapp.util.ApiState
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
@@ -29,18 +37,24 @@ class CryptoCurrenciesFragment : BaseFragment<FragmentCryptoCurrenciesBinding>(F
         lifecycleScope.launchWhenCreated {
             viewModel.state.collect { event->
                 when(event){
-                    is CryptoViewModel.States.Success->{
-                        Log.d("nio", "${viewModel.deliveredCryptoList[0].id}")
+                    is ApiState.Success<*> ->{
                         cryptoAdapter.cryptoData = viewModel.deliveredCryptoList
+                        binding.cryptoProgressBar.invisible()
+
                     }
-                    is CryptoViewModel.States.Failure->{
-                        Log.d("nio", "failure")
+                    is ApiState.Failure->{
+                        binding.cryptoProgressBar.invisible()
+                        Snackbar.make(binding.cryptoProgressBar, event.msg,Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(ContextCompat.getColor(requireContext(), R.color.blue))
+                            .show()
                     }
-                    is CryptoViewModel.States.Empty->{
-                        Log.d("nio", "empty")
+                    is ApiState.Empty->{
+                        binding.cryptoProgressBar.invisible()
+
                     }
-                    is CryptoViewModel.States.Loading->{
-                        Log.d("nio", "loading")
+                    is ApiState.Loading->{
+                        binding.cryptoProgressBar.visible()
+
                     }
                    
                 }

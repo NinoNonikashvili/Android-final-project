@@ -97,12 +97,6 @@ class UserProfileFragment : BaseFragment<FragmentUserProfileBinding>(FragmentUse
     }
 
 
-        //viewmodel.retrievedatafromdb()
-        //totalStateFlow.collect{
-        //binding.amount.text = it.toString}
-        //currencyListStateFLow.collect{
-        //addTabOnUserPage()}
-
     private fun setUI(){
         Log.d("TAG2", "set ui")
 

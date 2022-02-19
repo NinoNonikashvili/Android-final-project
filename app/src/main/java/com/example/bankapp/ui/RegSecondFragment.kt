@@ -1,15 +1,19 @@
 package com.example.bankapp.ui
 
 
+import android.graphics.Color
 import android.util.Log
+import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.bankapp.R
 import com.example.bankapp.RegSecondVIewModel
 import com.example.bankapp.model.UserData
 import com.example.bankapp.databinding.FragmentRegSecondBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -82,17 +86,18 @@ class RegSecondFragment : BaseFragment<FragmentRegSecondBinding>(FragmentRegSeco
         }
     }
     private fun registerUser(email:String, password:String, userInfo: UserData){
-
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener() {task->
-            //progressbar
             if(task.isSuccessful){
-                Log.d("TAG1", "createUserWithEmail:success")
                 saveDataInFireStore(userInfo)
+                Snackbar.make(binding.register, "account created successfully", Snackbar.LENGTH_LONG)
+                    .setBackgroundTint(ContextCompat.getColor(requireContext(), R.color.blue))
+                    .show()
 
             }
             else{
-                Log.d("TAG1", "createUserWithEmail:FAILURE ", task.exception)
-
+                Snackbar.make(binding.register, task.exception.toString(), Snackbar.LENGTH_LONG)
+                    .setBackgroundTint(ContextCompat.getColor(requireContext(), R.color.blue))
+                    .show()
             }
         }
 

@@ -13,6 +13,10 @@ interface CryptoApi {
         @Query("interval")
         interval : String = "1d",
         @Query("convert")
-        convert : String ="USD"
+        convert : String ="USD",
+        @Query("per-page")
+        perPage:String = "50",
+        @Query("page")
+        page:String = "1"
         ): Response<CryptoData>
 }

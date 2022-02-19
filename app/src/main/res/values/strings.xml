@@ -22,7 +22,7 @@
     <string name="registration">რეგისტრაცია</string>
     <string name="backToLoginPage">მთავარ გვერდზე დაბრუნება</string>
     <string name="available_money">ხელმისაწვდომია</string>
-    <string name="log_out">Log out</string>
+    <string name="log_out">გასვლა</string>
     <string name="add_balance">ბალანსის შევსება</string>
     <string name="enter_money">შეიყვანეთ თანხა</string>
     <string name="gel">GEL</string>
@@ -55,7 +55,7 @@
     <string name="crypto_currency_symbol">"BTC"</string>
     <string name="cryptoName">"Crypto Currency"</string>
     <string name="cryptoSymbol">"Crypto Symbol"</string>
-    <string name="cryptoDate">"02.02.2022 12:22:22"</string>
+    <string name="cryptoDate">"02.02.2022"</string>
     <string name="cryptoPrice">"Price: "</string>
     <string name="cryptoCap">"Market Cap: "</string>
     <string name="cryptoVolume">"Volume: "</string>
