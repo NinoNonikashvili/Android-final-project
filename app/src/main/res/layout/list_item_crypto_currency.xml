@@ -4,65 +4,88 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="5dp"
-    android:layout_margin="20dp"
-    android:backgroundTint="#7F8387"
-
+    android:layout_margin="10dp"
+    app:cardCornerRadius="5dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topLayer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp">
+        android:layout_height="150dp"
+        >
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/left"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.35"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/lighter_than_blue"
+            android:paddingStart="10dp"
+            >
+
+
+
+            <TextView
+                android:id="@+id/TV_CryptoCurrencyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/crypto_currency_name"
+                android:textColor="@color/grey"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/LL_logoWrapper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            android:orientation="horizontal"
+            >
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/IV_CryptoCurrencyLogo"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:srcCompat="@drawable/ic_baseline_monetization_on_24" />
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                app:srcCompat="@drawable/ic_baseline_monetization_on_24"
+
+                />
+
 
             <TextView
                 android:id="@+id/TV_cryptoCurrencySymbol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/IV_CryptoCurrencyLogo"
                 android:text="@string/crypto_currency_symbol"
-                android:textSize="25sp" />
+                android:textColor="@color/grey"
+                android:textSize="18sp"
+                android:layout_marginStart="5dp"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-        <TextView
-            android:id="@+id/TV_CryptoCurrencyDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cryptoDate"
-            android:textStyle="italic"
-            android:textSize="18sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/LL_logoWrapper"/>
 
-    <TextView
-        android:id="@+id/TV_CryptoCurrencyName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/crypto_currency_name"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LL_logoWrapper"
-        app:layout_constraintBottom_toTopOf="@+id/TV_volume"
-        />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/right"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.65"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/light_grey"
+            app:layout_constraintStart_toEndOf="@id/left">
 
 
         <TextView
@@ -70,20 +93,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text= "@string/cryptoVolume"
-            android:textSize="20sp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/TV_CryptoCurrencyName"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:textSize="14sp"
+            android:textColor="@color/grey"
+            android:layout_marginBottom="5dp"
+
+            />
         <TextView
             android:id="@+id/TV_change"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/CryptoPriceChange"
-            android:textSize="20sp"
-            android:layout_marginBottom="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/TV_volume"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="14sp"
+            android:textColor="@color/grey"
+            android:layout_marginBottom="5dp"
             />
 
 
@@ -92,10 +114,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cryptoPrice"
-                android:layout_marginBottom="10dp"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/TV_change"
+                android:layout_marginBottom="5dp"
+                android:textSize="14sp"
+                android:textColor="@color/grey"
                 />
             <TextView
                 android:id="@+id/TV_marketCap"
@@ -103,13 +124,22 @@
                 android:layout_height="wrap_content"
                 android:text="@string/cryptoCap"
                 android:layout_below="@+id/TV_price"
-                android:textSize="20sp"
-                app:layout_constraintTop_toBottomOf="@+id/TV_price"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="14sp"
+                android:textColor="@color/grey"
+                />
+            <TextView
+                android:id="@+id/TV_CryptoCurrencyDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cryptoDate"
+                android:textStyle="italic"
+                android:textSize="14sp"
+                android:layout_gravity="end"
+                android:textColor="@color/grey"
                 />
 
 
-
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

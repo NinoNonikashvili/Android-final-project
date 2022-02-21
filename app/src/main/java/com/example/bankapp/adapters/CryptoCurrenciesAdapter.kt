@@ -8,6 +8,7 @@ import android.os.Build
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
 import android.util.Log
 import android.view.LayoutInflater
@@ -69,9 +70,9 @@ class CryptoCurrenciesAdapter():
             val cryptoObject = cryptoData[position]
             TVCryptoCurrencyName.text = cryptoObject.name
             cryptoObject.d?.volume?.toDouble()?.toBillionNotation()?.let {
-                TVVolume.text = span("Volume(24hrs): ", it,15, "#E8E9EA" )
-            }
+                TVVolume.text = span("Volume(24hrs): ", it,15, "#5f5f5f" )
 
+            }
 
             cryptoObject.d?.priceChangePct?.let {
                 val color = if (it.contains("-")) "#ff4040" else "#32cd32"
@@ -79,11 +80,11 @@ class CryptoCurrenciesAdapter():
                 TVChange.text = span("Price Change(24hrs):", it, 20, color )
                  }
             cryptoObject.price?.let {
-                TVPrice.text = span("Price: $", it,7, "#E8E9EA" )
+                TVPrice.text = span("Price: $", it,7, "#5f5f5f" )
 
             }
             cryptoObject.marketCap?.toDouble()?.toBillionNotation()?.let {
-                TVMarketCap.text = span("Market Cap:", it, 12, "#E8E9EA")
+                TVMarketCap.text = span("Market Cap:", it, 12, "#5f5f5f")
 
             }
             TVCryptoCurrencySymbol.text = cryptoObject.symbol
@@ -110,6 +111,12 @@ class CryptoCurrenciesAdapter():
              val spannedString = SpannableString("$string $subString")
              spannedString.setSpan(
                  ForegroundColorSpan(Color.parseColor(color)),
+                 start,
+                 spannedString.length,
+                 Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+             )
+             spannedString.setSpan(
+                 RelativeSizeSpan(1.2f),
                  start,
                  spannedString.length,
                  Spannable.SPAN_EXCLUSIVE_INCLUSIVE
