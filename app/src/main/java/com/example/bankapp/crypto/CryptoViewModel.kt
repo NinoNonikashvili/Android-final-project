@@ -22,7 +22,7 @@ class CryptoViewModel @Inject constructor(
 
     private val _state = MutableStateFlow<ApiState>(ApiState.Empty)
     val state : StateFlow<ApiState> = _state
-    lateinit var deliveredCryptoList : CryptoData
+    var deliveredCryptoList = CryptoData()
 
 
 
