@@ -51,16 +51,15 @@
     <string name="typeAmount">"0.00"</string>
     <string name="convertFrom">"საიდან?"</string>
     <string name="convertTo">"სად?"</string>
-    <string name="crypto_currency_name">"Bitcoin"</string>
-    <string name="crypto_currency_symbol">"BTC"</string>
+    <string name="crypto_currency_name">"Bitcoin(BTC)"</string>
     <string name="cryptoName">"Crypto Currency"</string>
     <string name="cryptoSymbol">"Crypto Symbol"</string>
     <string name="cryptoDate">"02.02.2022"</string>
-    <string name="cryptoPrice">"Price: "</string>
+    <string name="cryptoPrice">"1234.12342321"</string>
     <string name="cryptoCap">"Market Cap: "</string>
     <string name="cryptoVolume">"Volume: "</string>
     <string name="notAvailable">"NA"</string>
-    <string name="CryptoPriceChange">"Price Change: "</string>
+    <string name="CryptoPriceChange">"0.004"</string>
     <string-array name="currency_codes">
         <item>AED</item>
         <item>AMD</item>

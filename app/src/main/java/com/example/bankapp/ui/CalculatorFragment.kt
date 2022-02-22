@@ -28,7 +28,8 @@ class CalculatorFragment : BaseFragment<FragmentCalculatorBinding>(FragmentCalcu
 
     override fun start() {
         setAdapter()
-        binding.IVConvert.setOnClickListener {
+        binding.lottieAnimation.setOnClickListener {
+            binding.lottieAnimation.playAnimation()
             convertData()
         }
         observe()
@@ -65,16 +66,19 @@ class CalculatorFragment : BaseFragment<FragmentCalculatorBinding>(FragmentCalcu
                         }
                         is ApiState.Failure -> {
                             Toast.makeText(requireContext(), it.msg, Toast.LENGTH_SHORT).show()
+                            binding.lottieAnimation.pauseAnimation()
+
                         }
                         is ApiState.Success<*> -> {
                             binding.progressBar.invisible()
                             val result = it.data as ConvertInfo
                             binding.TVConvertedMoney.setText( result.value.roundDecimal(1))
+                            binding.lottieAnimation.pauseAnimation()
 
                         }
                         is ApiState.Empty -> {
                             Log.d("mm1", "empty")
-
+                            binding.lottieAnimation.pauseAnimation()
                         }
                     }
 

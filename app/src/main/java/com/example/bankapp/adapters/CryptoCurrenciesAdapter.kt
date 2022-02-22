@@ -68,26 +68,26 @@ class CryptoCurrenciesAdapter():
         holder.itemView.context
         holder.binding.apply{
             val cryptoObject = cryptoData[position]
-            TVCryptoCurrencyName.text = cryptoObject.name
+            TVCryptoCurrencyName.text = "${cryptoObject.name}(${cryptoObject.symbol})"
             cryptoObject.d?.volume?.toDouble()?.toBillionNotation()?.let {
-                TVVolume.text = span("Volume(24hrs): ", it,15, "#5f5f5f" )
+                TVVolume.text = span("Vol.(24hrs): ", it,0,12, "#4f4f4f" )
 
             }
 
             cryptoObject.d?.priceChangePct?.let {
                 val color = if (it.contains("-")) "#ff4040" else "#32cd32"
 
-                TVChange.text = span("Price Change(24hrs):", it, 20, color )
+                TVChange.text = span("", it, 0, it.length+1, color )
+
                  }
             cryptoObject.price?.let {
-                TVPrice.text = span("Price: $", it,7, "#5f5f5f" )
+                TVPrice.text = "$${cryptoObject.price}"
 
             }
             cryptoObject.marketCap?.toDouble()?.toBillionNotation()?.let {
-                TVMarketCap.text = span("Market Cap:", it, 12, "#5f5f5f")
+                TVMarketCap.text = span("Market Cap:", it, 0, 11, "#4f4f4f")
 
             }
-            TVCryptoCurrencySymbol.text = cryptoObject.symbol
             TVCryptoCurrencyDate.text = cryptoObject.priceDate?.dropLast(10)
             cryptoObject.logoUrl?.let{
                 IVCryptoCurrencyLogo.loadSvg(it)
@@ -107,21 +107,16 @@ class CryptoCurrenciesAdapter():
              string:String,
              subString:String,
              start:Int,
+             end:Int,
              color:String):SpannableString {
              val spannedString = SpannableString("$string $subString")
              spannedString.setSpan(
                  ForegroundColorSpan(Color.parseColor(color)),
                  start,
-                 spannedString.length,
+                 end,
                  Spannable.SPAN_EXCLUSIVE_INCLUSIVE
              )
-             spannedString.setSpan(
-                 RelativeSizeSpan(1.2f),
-                 start,
-                 spannedString.length,
-                 Spannable.SPAN_EXCLUSIVE_INCLUSIVE
-             )
-             Log.d("TAG3", subString)
+
 
              return spannedString
          }
