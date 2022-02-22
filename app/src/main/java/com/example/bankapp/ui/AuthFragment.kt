@@ -1,12 +1,14 @@
 package com.example.bankapp.ui
 
 import android.util.Log
+import android.util.Patterns
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.bankapp.databinding.FragmentAuthBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -18,9 +20,8 @@ private val loginViewModel:LoginViewModel by viewModels()
 
     override fun start() {
         auth = FirebaseAuth.getInstance()
-
+        resetPassword()
         if(auth.currentUser!=null){
-            Log.d("TAG5", "entered here")
             val args: AuthFragmentArgs by navArgs()
             binding.email.setText(auth.currentUser?.email)
             binding.password.setText(args.password)
@@ -85,4 +86,23 @@ private val loginViewModel:LoginViewModel by viewModels()
         }
     }
 
+    private fun resetPassword(){
+        binding.forgotPassword.setOnClickListener {
+            val email = binding.email.text.toString()
+            if(email.isNullOrEmpty()|| !Patterns.EMAIL_ADDRESS.matcher(email).matches())
+                Snackbar.make(binding.forgotPassword, "enter correct email", Snackbar.LENGTH_LONG).show()
+            else {
+                auth.sendPasswordResetEmail(email).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Snackbar.make(binding.forgotPassword, "link is sent to your email", Snackbar.LENGTH_LONG).show()
+
+                    } else {
+                        Snackbar.make(binding.forgotPassword, "email could not be sent", Snackbar.LENGTH_LONG).show()
+
+                    }
+                }
+
+            }
+        }
+    }
 }

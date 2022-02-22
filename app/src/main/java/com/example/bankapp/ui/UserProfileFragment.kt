@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 class UserProfileFragment : BaseFragment<FragmentUserProfileBinding>(FragmentUserProfileBinding::inflate) {
     private lateinit var auth: FirebaseAuth
     private val viewModel: CalculationSharedViewModel by viewModels()
-
+    val db = Firebase.firestore
 
     override fun start() {
         auth = FirebaseAuth.getInstance()
@@ -98,18 +98,21 @@ class UserProfileFragment : BaseFragment<FragmentUserProfileBinding>(FragmentUse
 
 
     private fun setUI(){
-        Log.d("TAG2", "set ui")
+        db.collection(auth.currentUser?.uid.toString()).document("userData")
+            .get().addOnSuccessListener {
+                val userCardNumber = it.data?.get("cardNumber").toString().drop(6)
+                binding.cardNumber.text = "**** **** **** ${userCardNumber}"
+
+            }
 
         lifecycleScope.launch {   //repeatOnLifecycle
             viewModel.totalAmount.collect {
                 binding.amount.text = it.roundDecimal(2)
-                Log.d("TAG2", "collected Total")
 
             }
         }
         lifecycleScope.launch {
             viewModel.listFlag.collect {
-                Log.d("TAG2", "collected currencyList ${viewModel._currencyList}")
                 //send map to updateTabs function
                 addTabOnUserPage(viewModel._currencyList)
             }

@@ -115,6 +115,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:maxLines="1"
+                    android:maxLength="12"
                     android:id="@+id/ET_amountToConvert"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -139,14 +140,19 @@
                     android:id="@+id/TV_convertedMoney"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:maxLines="1"
+                    android:inputType="number"
                     android:enabled="false"
                     android:text="@string/typeAmount"
+                    android:ellipsize="end"
                     android:textColor="@color/blue"
                     android:textSize="14sp"
                     android:textStyle="bold" />
             </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
+                />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

@@ -3,7 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello">გამარჯობა</string>
-    <string name="username">მომხმარებლის სახელი</string>
+    <string name="email">ელ.ფოსტა</string>
     <string name="forgotPassword">დაგავიწყდა პაროლი?</string>
     <string name="login">შესვლა</string>
     <string name="register">რეგისტრაცია</string>

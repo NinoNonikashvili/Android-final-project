@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/RV_cryptoRecyclerView"
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/blue"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            />
+    </com.google.android.material.appbar.AppBarLayout>
 
 
 
@@ -12,13 +29,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/light_grey"
-
+        app:layout_constraintTop_toBottomOf="@+id/app_bar_layout"
         />
     <ProgressBar
         android:id="@+id/cryptoProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:outlineAmbientShadowColor="@color/grey"
-        android:outlineSpotShadowColor="@color/grey"/>
-</FrameLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

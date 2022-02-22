@@ -104,7 +104,7 @@ class RegSecondFragment : BaseFragment<FragmentRegSecondBinding>(FragmentRegSeco
     }
     private fun saveDataInFireStore(userInfo: UserData){
         val userId = auth.currentUser?.uid.toString()
-        db.collection(userId).add(userInfo)
+        db.collection(userId).document("userData").set(userInfo)
             .addOnSuccessListener { Log.d("TAG1", "added successfully") }
             .addOnFailureListener { e-> Log.d("TAG1", "could not add", e) }
     }

@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.example.bankapp.R
 import com.example.bankapp.databinding.FragmentConversionBinding
 import com.example.bankapp.extensions.invisible
@@ -15,6 +16,7 @@ import com.example.bankapp.extensions.visible
 import com.example.bankapp.model.ConvertInfo
 import com.example.bankapp.util.ApiState
 import com.example.bankapp.viewModels.CalculationSharedViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -30,7 +32,7 @@ class ConversionFragment : BaseFragment<FragmentConversionBinding>(FragmentConve
             convertData()
         }
         observe()
-
+        goBack()
     }
 
     private fun setAdapter(){
@@ -59,12 +61,16 @@ class ConversionFragment : BaseFragment<FragmentConversionBinding>(FragmentConve
                             binding.progressBar.visible()
                         }
                         is ApiState.Failure -> {
-                            Toast.makeText(requireContext(), it.msg, Toast.LENGTH_SHORT).show()
+
+                            Snackbar.make(binding.convertButton, it.msg, Snackbar.LENGTH_LONG).show()
+
                         }
                         is ApiState.Success<*> -> {
                             binding.progressBar.invisible()
                             val result = it.data as ConvertInfo
                             binding.convertedMoney.text = result.value.roundDecimal(2)
+                            Snackbar.make(binding.convertButton, "converted successfully", Snackbar.LENGTH_LONG).show()
+
                         }
                         is ApiState.Empty -> {
 
@@ -75,6 +81,11 @@ class ConversionFragment : BaseFragment<FragmentConversionBinding>(FragmentConve
             }
         }
 
+    }
+    private fun goBack(){
+        binding.appBar.setNavigationOnClickListener{
+            findNavController().navigate(ConversionFragmentDirections.actionConversionFragmentToUserProfileFragment())
+        }
     }
 
 }

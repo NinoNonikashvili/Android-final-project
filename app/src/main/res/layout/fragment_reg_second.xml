@@ -26,7 +26,7 @@
         android:id="@+id/emailWrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/user_name"
+        android:hint="@string/email"
         android:textColorHint="@color/black"
         app:boxStrokeColor="@color/blue"
         app:errorEnabled="true"

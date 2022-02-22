@@ -27,7 +27,6 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/blue"
                 app:menu="@menu/tool_bar_menu"
-                app:navigationIcon="@drawable/ic_arrow_back"
                 app:title="Bank User"
                 app:titleTextColor="@color/white" />
         </com.google.android.material.appbar.AppBarLayout>
