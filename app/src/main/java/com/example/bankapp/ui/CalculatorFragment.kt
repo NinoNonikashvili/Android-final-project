@@ -3,7 +3,6 @@ package com.example.bankapp.ui
 
 import android.util.Log
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -16,7 +15,6 @@ import com.example.bankapp.extensions.roundDecimal
 import com.example.bankapp.extensions.visible
 import com.example.bankapp.model.ConvertInfo
 import com.example.bankapp.util.ApiState
-import com.example.bankapp.viewModels.CalculationSharedViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -38,7 +36,9 @@ class CalculatorFragment : BaseFragment<FragmentCalculatorBinding>(FragmentCalcu
    }
 
     private fun setAdapter(){
+
         val currencyList = ArrayAdapter(requireContext(), R.layout.list_currencies, resources.getStringArray(R.array.currency_codes))
+
         binding.ATVCurrenciesDropDown1.apply {
             setText("USD")
             setAdapter(currencyList)

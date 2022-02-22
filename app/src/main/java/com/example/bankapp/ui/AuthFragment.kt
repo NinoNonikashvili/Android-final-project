@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.bankapp.databinding.FragmentAuthBinding
+import com.example.bankapp.viewModels.LoginViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.flow.collect
@@ -16,7 +17,7 @@ import kotlinx.coroutines.launch
 
 class AuthFragment : BaseFragment<FragmentAuthBinding>(FragmentAuthBinding::inflate) {
 private lateinit var auth: FirebaseAuth
-private val loginViewModel:LoginViewModel by viewModels()
+private val loginViewModel: LoginViewModel by viewModels()
 
     override fun start() {
         auth = FirebaseAuth.getInstance()

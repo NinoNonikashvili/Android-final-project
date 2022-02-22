@@ -1,4 +1,4 @@
-package com.example.bankapp.ui
+package com.example.bankapp.viewModels
 
 import android.util.Patterns
 import androidx.lifecycle.ViewModel

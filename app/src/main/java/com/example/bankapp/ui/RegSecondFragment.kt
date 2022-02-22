@@ -1,7 +1,6 @@
 package com.example.bankapp.ui
 
 
-import android.graphics.Color
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
@@ -10,7 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.bankapp.R
-import com.example.bankapp.RegSecondVIewModel
+import com.example.bankapp.viewModels.RegSecondVIewModel
 import com.example.bankapp.model.UserData
 import com.example.bankapp.databinding.FragmentRegSecondBinding
 import com.google.android.material.snackbar.Snackbar
@@ -23,7 +22,7 @@ import kotlinx.coroutines.launch
 
 class RegSecondFragment : BaseFragment<FragmentRegSecondBinding>(FragmentRegSecondBinding::inflate) {
     private val args: RegSecondFragmentArgs by navArgs()
-    private val reg2ViewModel:RegSecondVIewModel by viewModels()
+    private val reg2ViewModel: RegSecondVIewModel by viewModels()
     private lateinit var auth: FirebaseAuth
     val db = Firebase.firestore
 

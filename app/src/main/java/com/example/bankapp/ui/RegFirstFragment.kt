@@ -6,7 +6,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.bankapp.RegFirstViewModel
+import com.example.bankapp.viewModels.RegFirstViewModel
 import com.example.bankapp.model.UserData
 import com.example.bankapp.databinding.FragmentRegFirstBinding
 import kotlinx.coroutines.flow.collect

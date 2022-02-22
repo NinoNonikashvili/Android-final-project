@@ -28,7 +28,6 @@ class CryptoCurrenciesFragment : BaseFragment<FragmentCryptoCurrenciesBinding>(F
     override fun start() {
 
         initRecyclerView()
-        goBack()
     }
     private fun initRecyclerView(){
        val cryptoRecycler =  binding.RVCryptoRecyclerView
@@ -63,11 +62,7 @@ class CryptoCurrenciesFragment : BaseFragment<FragmentCryptoCurrenciesBinding>(F
             }
         }
     }
-    private fun goBack(){
-        binding.appBar.setNavigationOnClickListener{
-            findNavController().navigate(CryptoCurrenciesFragmentDirections.actionCryptoCurrenciesFragmentToUserProfileFragment())
-        }
-    }
+
 
 
 }
