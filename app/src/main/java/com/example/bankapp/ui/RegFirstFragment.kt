@@ -62,38 +62,38 @@ class RegFirstFragment : BaseFragment<FragmentRegFirstBinding>(FragmentRegFirstB
         binding.userId.setOnFocusChangeListener { v, hasFocus ->
             binding.userIdWrapper.error = null
             if (!hasFocus&&!regViewModel.isUserIdValid)
-                binding.userIdWrapper.error = "Enter valid ID"
+                binding.userIdWrapper.error = "შეიყვანეთ სწორი ID"
 
         }
         binding.phoneNum.setOnFocusChangeListener { v, hasFocus ->
             binding.mobileNumberWrapper.error = null
             if (!hasFocus&&!regViewModel.isPhoneNumValid){
-                binding.mobileNumberWrapper.error = "Enter using format: 5XXXXXXXX"
+                binding.mobileNumberWrapper.error = "გამოიყენეთ ფორმატი: 5XXXXXXXX"
             }
 
         }
         binding.first6numbers.setOnFocusChangeListener { v, hasFocus ->
             binding.firstNumbersWrapper.error = null
             if (!hasFocus&&!regViewModel.isFirstNumValid)
-                binding.firstNumbersWrapper.error = "Enter valid card digits"
+                binding.firstNumbersWrapper.error = "შეიყვანეთ სწორი ბარათის ნომრები"
 
         }
         binding.last4numbers.setOnFocusChangeListener { v, hasFocus ->
             binding.lastNumbersWrapper.error = null
             if (!hasFocus&&!regViewModel.isLastNumValid)
-                binding.lastNumbersWrapper.error = "Enter valid card digits"
+                binding.lastNumbersWrapper.error = "შეიყვანეთ სწორი ბარათის ნომრები"
 
         }
         binding.expireDate.setOnFocusChangeListener { v, hasFocus ->
             binding.expireDateWrapper.error = null
             if (!hasFocus&&!regViewModel.isExpDateValid)
-                binding.expireDateWrapper.error = "Enter valid date XX/XX"
+                binding.expireDateWrapper.error = "გამოიყენეთ ფორმატი XX/XX"
 
         }
         binding.cvcCode.setOnFocusChangeListener { v, hasFocus ->
             binding.cvcCodeWrapper.error = null
             if (!hasFocus&&!regViewModel.isCvcValid)
-                binding.cvcCodeWrapper.error = "Enter valid cvc"
+                binding.cvcCodeWrapper.error = "შეიყვანეთ სწორი cvc კოდი"
 
         }
 

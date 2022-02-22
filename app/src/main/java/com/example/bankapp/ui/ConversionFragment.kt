@@ -69,7 +69,7 @@ class ConversionFragment : BaseFragment<FragmentConversionBinding>(FragmentConve
                             binding.progressBar.invisible()
                             val result = it.data as ConvertInfo
                             binding.convertedMoney.text = result.value.roundDecimal(2)
-                            Snackbar.make(binding.convertButton, "converted successfully", Snackbar.LENGTH_LONG).show()
+                            Snackbar.make(binding.convertButton, "წარმატებით დაკონვერტირდა", Snackbar.LENGTH_LONG).show()
 
                         }
                         is ApiState.Empty -> {

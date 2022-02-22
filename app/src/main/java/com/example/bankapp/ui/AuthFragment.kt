@@ -21,15 +21,20 @@ private val loginViewModel: LoginViewModel by viewModels()
 
     override fun start() {
         auth = FirebaseAuth.getInstance()
+        sendDataToViewModel()
+        setErrorIfIncorrectInput()
         resetPassword()
         if(auth.currentUser!=null){
+            binding.login.isEnabled = true
             val args: AuthFragmentArgs by navArgs()
             binding.email.setText(auth.currentUser?.email)
             binding.password.setText(args.password)
         }
-        sendDataToViewModel()
-        setErrorIfIncorrectInput()
-        setLoginBtnState()
+        else{
+            setLoginBtnState()
+
+        }
+
         binding.login.setOnClickListener{
             signIn(binding.email.text.toString(),binding.password.text.toString())
 
@@ -55,12 +60,12 @@ private val loginViewModel: LoginViewModel by viewModels()
         binding.email.setOnFocusChangeListener { v, hasFocus ->
             binding.emailWrapper.error = null
             if (!hasFocus&&!loginViewModel.isEmailValid)
-                binding.emailWrapper.error = "type correct email"
+                binding.emailWrapper.error = "შეიყვანეთ სწორი ელ.ფოსტა"
         }
         binding.password.setOnFocusChangeListener { v, hasFocus ->
             binding.passwordWrapper.error = null
             if (!hasFocus&&!loginViewModel.isPasswordValid)
-                binding.passwordWrapper.error = "type correct email"
+                binding.passwordWrapper.error = "შეიყვანეთ სწორი პაროლი"
         }
     }
 
@@ -75,12 +80,10 @@ private val loginViewModel: LoginViewModel by viewModels()
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener() {
             task->
             if(task.isSuccessful) {
-                Log.d("TAG7", "log in success")
                 findNavController().navigate(AuthFragmentDirections.actionAuthFragmentToUserProfileFragment())
 
             }
             else {
-                Log.d("TAG7", "Log in failure", task.exception)
                 binding.emailWrapper.error = "ელ.ფოსტა ან პაროლი არასწორია"
                 binding.passwordWrapper.error = "ელ.ფოსტა ან პაროლი არასწორია"
             }
@@ -91,14 +94,14 @@ private val loginViewModel: LoginViewModel by viewModels()
         binding.forgotPassword.setOnClickListener {
             val email = binding.email.text.toString()
             if(email.isNullOrEmpty()|| !Patterns.EMAIL_ADDRESS.matcher(email).matches())
-                Snackbar.make(binding.forgotPassword, "enter correct email", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(binding.forgotPassword, "შეიყვანეთ სწორი ელ.ფოსტა", Snackbar.LENGTH_LONG).show()
             else {
                 auth.sendPasswordResetEmail(email).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Snackbar.make(binding.forgotPassword, "link is sent to your email", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(binding.forgotPassword, "ლინკი გამოგზავნილია მითითებულ ელ.ფოსტაზე", Snackbar.LENGTH_LONG).show()
 
                     } else {
-                        Snackbar.make(binding.forgotPassword, "email could not be sent", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(binding.forgotPassword, "ლინკის გამოგზავნა ვერ მოხერხდა", Snackbar.LENGTH_LONG).show()
 
                     }
                 }

@@ -64,17 +64,17 @@ class RegSecondFragment : BaseFragment<FragmentRegSecondBinding>(FragmentRegSeco
         binding.email.setOnFocusChangeListener { v, hasFocus ->
             binding.emailWrapper.error = null
             if(!hasFocus&&!reg2ViewModel.isEmailValid)
-                binding.emailWrapper.error = "enter valid email"
+                binding.emailWrapper.error = "შეიყვანეთ სწორი ელ.ფოსტა"
         }
         binding.password.setOnFocusChangeListener { v, hasFocus ->
             binding.passwordWrapper.error = null
             if(!hasFocus&&!reg2ViewModel.isPasswordValid)
-                binding.passwordWrapper.error = "min 9 and max 15 symbols"
+                binding.passwordWrapper.error = "მინ.9 და მაქს.15 სიმბოლო"
         }
         binding.passwordRepeat.setOnFocusChangeListener { v, hasFocus ->
             binding.passwordRepeatWrapper.error = null
             if(!hasFocus&&!reg2ViewModel.isRepeatedPasswordValid)
-                binding.passwordRepeatWrapper.error = "passwords do not match"
+                binding.passwordRepeatWrapper.error = "პაროლები არ ემთხვევა"
         }
     }
     private fun setButtonState(){
@@ -88,7 +88,7 @@ class RegSecondFragment : BaseFragment<FragmentRegSecondBinding>(FragmentRegSeco
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener() {task->
             if(task.isSuccessful){
                 saveDataInFireStore(userInfo)
-                Snackbar.make(binding.register, "account created successfully", Snackbar.LENGTH_LONG)
+                Snackbar.make(binding.register, "ანგარიში წარმატებით შეიქმნა", Snackbar.LENGTH_LONG)
                     .setBackgroundTint(ContextCompat.getColor(requireContext(), R.color.blue))
                     .show()
 
