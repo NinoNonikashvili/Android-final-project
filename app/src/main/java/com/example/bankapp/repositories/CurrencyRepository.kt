@@ -1,4 +1,4 @@
-package com.example.bankapp.currency
+package com.example.bankapp.repositories
 
 import com.example.bankapp.model.ConvertInfo
 import com.example.bankapp.model.Currency

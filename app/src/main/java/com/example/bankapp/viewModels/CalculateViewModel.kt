@@ -1,7 +1,8 @@
-package com.example.bankapp.currency
+package com.example.bankapp.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.bankapp.repositories.CurrencyRepository
 import com.example.bankapp.util.ApiState
 import com.example.bankapp.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,7 +13,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CalculateViewModel @Inject constructor(
-    private val currencyRepository: CurrencyRepository) :
+    private val currencyRepository: CurrencyRepository
+) :
     ViewModel() {
 
     private val _calculateStateFlow: MutableStateFlow<ApiState> = MutableStateFlow(ApiState.Empty)

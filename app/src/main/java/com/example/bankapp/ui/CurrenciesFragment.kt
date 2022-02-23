@@ -5,11 +5,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bankapp.R
 import com.example.bankapp.adapters.CurrencyAdapter
-import com.example.bankapp.currency.CurrencyViewModel
+import com.example.bankapp.viewModels.CurrencyViewModel
 import com.example.bankapp.databinding.FragmentCurrenciesBinding
 import com.example.bankapp.extensions.invisible
 import com.example.bankapp.extensions.visible

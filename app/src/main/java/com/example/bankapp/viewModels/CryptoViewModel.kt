@@ -1,8 +1,9 @@
-package com.example.bankapp.crypto
+package com.example.bankapp.viewModels
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.bankapp.repositories.CryptoRepository
 import com.example.bankapp.model.CryptoData
 import com.example.bankapp.util.ApiState
 import com.example.bankapp.util.Resource
@@ -15,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CryptoViewModel @Inject constructor(
-    private val repository:CryptoRepository
+    private val repository: CryptoRepository
 ):ViewModel(){
 
 

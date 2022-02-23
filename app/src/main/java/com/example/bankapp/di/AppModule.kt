@@ -1,10 +1,11 @@
 package com.example.bankapp.di
 
-import com.example.bankapp.crypto.CryptoRepository
+import com.example.bankapp.repositories.CryptoRepository
 import com.example.bankapp.api.CryptoApi
 import com.example.bankapp.api.CurrencyApi
-import com.example.bankapp.currency.CurrencyRepository
-import com.example.bankapp.currency.CurrencyRepositoryImpl
+import com.example.bankapp.repositories.CurrencyRepository
+import com.example.bankapp.repositories.CurrencyRepositoryImpl
+import com.example.bankapp.util.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +16,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-private const val BASE_URL = "https://api.nomics.com/v1/"
+//private const val BASE_URL = "https://api.nomics.com/v1/"
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -40,7 +41,7 @@ object AppModule {
     @Singleton
     @Provides
     fun provideCurrencyApi(okHttpClient: OkHttpClient): CurrencyApi = Retrofit.Builder()
-        .baseUrl("https://test-api.tbcbank.ge")
+        .baseUrl(Constants.CURRENCY_BASE_URL)
         .addConverterFactory(
             GsonConverterFactory.create()
         )
@@ -56,7 +57,7 @@ object AppModule {
     @Singleton
     @Provides
     fun providesCryptoApi():CryptoApi = Retrofit.Builder()
-        .baseUrl(BASE_URL)
+        .baseUrl(Constants.CRYPTO_BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(CryptoApi::class.java)

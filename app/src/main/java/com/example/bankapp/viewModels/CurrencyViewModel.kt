@@ -1,8 +1,9 @@
-package com.example.bankapp.currency
+package com.example.bankapp.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bankapp.model.Rate
+import com.example.bankapp.repositories.CurrencyRepository
 import com.example.bankapp.util.ApiState
 import com.example.bankapp.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel

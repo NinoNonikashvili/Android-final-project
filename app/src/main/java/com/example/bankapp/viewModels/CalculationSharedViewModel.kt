@@ -3,7 +3,7 @@ package com.example.bankapp.viewModels
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.bankapp.currency.CurrencyRepository
+import com.example.bankapp.repositories.CurrencyRepository
 import com.example.bankapp.model.Total
 import com.example.bankapp.util.ApiState
 import com.example.bankapp.util.Resource
@@ -20,7 +20,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CalculationSharedViewModel @Inject constructor(
-    private val currencyRepository: CurrencyRepository) :
+    private val currencyRepository: CurrencyRepository
+) :
     ViewModel() {
     val db = Firebase.firestore
     private val auth = FirebaseAuth.getInstance()

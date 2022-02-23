@@ -1,16 +1,12 @@
 package com.example.bankapp.ui
 
 
-import android.graphics.Color
-import android.util.Log
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bankapp.R
-import com.example.bankapp.crypto.CryptoViewModel
+import com.example.bankapp.viewModels.CryptoViewModel
 import com.example.bankapp.adapters.CryptoCurrenciesAdapter
 import com.example.bankapp.databinding.FragmentCryptoCurrenciesBinding
 import com.example.bankapp.extensions.invisible

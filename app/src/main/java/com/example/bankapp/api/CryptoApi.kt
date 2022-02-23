@@ -1,15 +1,16 @@
 package com.example.bankapp.api
 
 import com.example.bankapp.model.CryptoData
+import com.example.bankapp.util.Constants
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface CryptoApi {
-    @GET("currencies/ticker")
+    @GET(Constants.CRYPTO_API_ENDPOINT)
     suspend fun getCryptoData(
         @Query("key")
-        key : String = "m_35f92c985560058c07533ecbd1063e7f0daa183d",
+        key : String = Constants.CRYPTO_API_KEY,
         @Query("interval")
         interval : String = "1d",
         @Query("convert")

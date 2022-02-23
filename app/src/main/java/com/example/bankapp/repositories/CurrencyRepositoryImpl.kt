@@ -1,9 +1,9 @@
-package com.example.bankapp.currency
+package com.example.bankapp.repositories
 
-import android.util.Log
 import com.example.bankapp.api.CurrencyApi
 import com.example.bankapp.model.ConvertInfo
 import com.example.bankapp.model.Currency
+import com.example.bankapp.repositories.CurrencyRepository
 import com.example.bankapp.util.Resource
 import javax.inject.Inject
 
