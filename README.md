@@ -24,6 +24,8 @@ api: https://nomics.com/docs
 
 ### Screenshots ###
 
-![image](https://user-images.githubusercontent.com/61002720/155399140-3cd40291-6ab0-496c-8428-e0e025c92389.png)
+<img src="https://user-images.githubusercontent.com/61002720/155399451-45a95570-f69b-4235-88f2-160ad124bd44.png" 
+     width="200" height="100">
+
 
 
